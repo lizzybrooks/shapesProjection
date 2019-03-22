@@ -7,6 +7,12 @@ let rightBlueY;
 let leftBlueX;
 let leftBlueY;
 
+//third phase
+let yellowBottomX;
+let yellowBottomY;
+let yellowBottom2X;
+let yellowBottom2Y;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(220);
@@ -22,6 +28,9 @@ function setup() {
   rightBlueY = 0;
   leftBlueX = 0;
   leftBlueY = windowHeight;
+
+  yellowBottomX=0;
+  yellowBottomX2=windowWidth;
 }
 
 function draw() {
@@ -46,7 +55,17 @@ function draw() {
       rightBlueX --;
       rightBlueY ++;
 
+  }
 
+  else if (frameCount >1800 && frameCount <= 2200){
+      stroke(255, 225, 0);
+      strokeWeight(5);
+      fill(255, 225, 0);
+
+      line(0,0,yellowBottomX,windowHeight);
+      line(windowWidth,0,yellowBottomX2, windowHeight);
+      yellowBottomX++;
+      yellowBottomX2--;
 
 
 
