@@ -57,7 +57,7 @@ function draw() {
 
   }
 
-  else if (frameCount >1800 && frameCount <= 2200){
+  else if (frameCount >1800 && frameCount <= 3200){
       stroke(255, 225, 0);
       strokeWeight(5);
       fill(255, 225, 0);
@@ -66,8 +66,6 @@ function draw() {
       line(windowWidth,0,yellowBottomX2, windowHeight);
       yellowBottomX++;
       yellowBottomX2--;
-
-
 
   }
 
