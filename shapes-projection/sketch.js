@@ -13,9 +13,14 @@ let yellowBottomY;
 let yellowBottom2X;
 let yellowBottom2Y;
 
+//red shadow
+let redShadowX;
+let redShadowY;
+
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   background(220);
+  translate(-width/2,-height/2);
   noStroke();
   fill(255,255,255);
   triangle(0,0, width, 0, 0, height);
@@ -31,6 +36,9 @@ function setup() {
 
   yellowBottomX=0;
   yellowBottomX2=windowWidth;
+
+  redShadowX=0;
+  redShadowY=-33;
 }
 
 function draw() {
@@ -38,8 +46,10 @@ function draw() {
 
 
 
-  if (frameCount >= 200 && frameCount <= 1000){
 
+
+  if (frameCount >= 200 && frameCount <= 1000){
+translate(-width/2,-height/2);
     print("drawing the line");
     stroke(100);
     fill(100);
@@ -48,7 +58,8 @@ function draw() {
   }
 
   else if (frameCount>=1001 && frameCount <=1800 ){
-      stroke(4, 92, 216);
+      translate(-width/2,-height/2);
+      stroke(4, 92, 216,240);
       fill(4, 92, 216);
 
       line(0,0, rightBlueX, rightBlueY);
@@ -58,6 +69,7 @@ function draw() {
   }
 
   else if (frameCount >1800 && frameCount <= 3200){
+      translate(-width/2,-height/2);
       stroke(255, 225, 0);
       strokeWeight(5);
       fill(255, 225, 0);
@@ -68,6 +80,22 @@ function draw() {
       yellowBottomX2--;
 
   }
+
+  else if(frameCount >3200 && frameCount <= 5500){
+      stroke(255,10,10,200);
+      strokeWeight(1);
+      fill(255,10,10,200);
+
+      line(redShadowX,redShadowY,0,height);
+      redShadowX++;
+      redShadowY = redShadowY-.44;
+
+      if(frameCount >= 5000){
+          // line(0,0,width,height);
+      }
+
+  }
+
 
 
 }
