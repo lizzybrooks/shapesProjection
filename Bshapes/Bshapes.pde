@@ -3,6 +3,8 @@ int swap = 1;
 Trap t1;
 Trap[] traps = new Trap[1];
 
+ArrayList<Trap> trapezoids = new ArrayList<Trap>();
+
 int isItBlack = 1; 
 
 movingLine Lopening, L1,L2,L3,L4,L5,L6,L7,L8, L9, L10, L11, L12;
@@ -11,6 +13,8 @@ void setup(){
   size(1000, 1000);
   background(0);
   frameRate(130);
+  
+  trapezoids.add(new Trap(.5,.5,.5,.5,.5,.5,.5,.5,-1));
   
   traps[0]= new Trap(.5,.5,.5,.5,.5,.5,.5,.5,-1);
   Lopening = new movingLine(width,0,0,height);
@@ -45,8 +49,7 @@ if (frameCount*6/10 < 500){
   Lopening.shift(0,0,-1,0);
   if(swap == -1){
   flipHalf();
-  
-}
+  }
 
 }
 
@@ -58,6 +61,8 @@ if (frameCount*6/10 >=500 && frameCount*6/10 <=1000){
   if(swap == -1){
   flipHalf();
   }
+
+  
 
 
 }
@@ -99,7 +104,7 @@ if (frameCount*6/10>1500 && frameCount*6/10 <= 2100){
   flipHalf();
   }
 
-
+  
 
 }
 
@@ -252,17 +257,15 @@ if (frameCount*6/10>3000 && frameCount*6/10<=3100){
 }
 
 if (frameCount*6/10>3100 && frameCount*6/10<=5000){
-  if (frameCount%300==0){
-  Trap t = new Trap(random(.3,.7),random(.3,.7),random(.4,.7),random(.3,.7),random(.3,.7),random(.3,.7),random(.3,.7),random(.3,.7), isItBlack);
-  traps = (Trap[]) append(traps,t);
+   if (frameCount%300==0){
+  trapezoids.add(new Trap(random(.3,.7),random(.3,.7),random(.4,.7),random(.3,.7),random(.3,.7),random(.3,.7),random(.3,.7),random(.3,.7), isItBlack));
   isItBlack = isItBlack*-1;
   }
   
-  for (int i = 0; i< traps.length; i++){
-    
-    traps[i].drawTrap();
-    
-   
+  for (int i = 0; i< trapezoids.size(); i++){
+    Trap t = trapezoids.get(i);
+    t.drawTrap();
+  
   }
    if(swap == -1){
   flipHalf();
@@ -270,7 +273,22 @@ if (frameCount*6/10>3100 && frameCount*6/10<=5000){
   
 }
 
-if (frameCount*6/10>5000){
+if (frameCount*6/10>5000 && frameCount*6/10<=6200){
+    for (int i = 0; i< trapezoids.size(); i++){
+    Trap t = trapezoids.get(i);
+    t.drawTrap();
+  
+  }
+   if(swap == -1){
+  flipHalf();
+  }
+  
+}
+
+if (frameCount*6/10>6200){
+  for (int i= trapezoids.size()-1;i>=0;i--){
+    trapezoids.remove(i);
+  } 
   frameCount = -1;
   swap = swap*-1;
  }

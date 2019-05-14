@@ -35,7 +35,7 @@ class Trap {
       fill(255);
     }
      
-     push();
+     pushMatrix();
      translate(width/2,height/2);
      quad(x1,y1,x2,y2,x3,y3,x4,y4);
      x1-= TLX;
@@ -46,7 +46,7 @@ class Trap {
      y2-=TRY;
      y3+=BRY;
      y4+=BLY;
-      pop();
+      popMatrix();
      
      
    }
